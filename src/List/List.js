@@ -5,9 +5,7 @@ import './List.css';
 import ListItem from '../ListItem/ListItem';
 
 const List = ({name}) => {
-  const [ itemsState , setItemsState ] = useState(
-    []
-  );
+  const [ itemsState , setItemsState ] = useState([]);
 
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {

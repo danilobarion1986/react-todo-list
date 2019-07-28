@@ -7,20 +7,19 @@ const ListItem = ({description}) => {
   const [ checkedState, setCheckedState ] = useState(false);
 
   const handleCheck = () => {
-    console.log(!checkedState);
     const updatedCheckedState = !checkedState;
     setCheckedState(updatedCheckedState);
   };
 
   const handleClick = () => {
-    console.log('clicked!');
+    console.log('clicked');
   };
 
   const completed = () => !!checkedState;
 
   return (
     <div className='list-item' style={{ display: (completed() ? 'none' : 'block')}}>
-      <p className='description'>
+      <p className='description' onClick={handleClick()}>
         <input
           className='checkbox'
           type='checkbox'
