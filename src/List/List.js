@@ -7,17 +7,6 @@ import ListItem from '../ListItem/ListItem';
 const List = ({name}) => {
   const [ itemsState , setItemsState ] = useState([]);
 
-  // This don't work!
-  // Use reducers instead: https://reactjs.org/docs/hooks-reference.html#usereducer
-  const completedItems = () => {
-    // const completedItemFilter = (item) => item.completed;
-    // const filteredItemsState = itemsState;
-    // const filteredItems = filteredItemsState.filter(completedItemFilter);
-
-    // return filteredItems.length;
-    return 0;
-  };
-
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
       const updatedItemsState = [
@@ -34,8 +23,6 @@ const List = ({name}) => {
 
   return (
     <div className='list'>
-      <h4>{name}</h4>
-      <p>Completed tasks: {completedItems()}</p>
       <input
         className='new-task'
         onKeyPress={(event) => handleKeyPress(event)}
