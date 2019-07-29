@@ -5,7 +5,12 @@
   border-radius: 4px;
   padding: 8px;
   text-align: left;
+
+  &.list-item-completed {
+    text-decoration: line-through;
+  }
 }
+
 
 .description {
   vertical-align: center;

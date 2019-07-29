@@ -1,38 +1,45 @@
 import React, { useState } from 'react';
 import PropType from 'prop-types';
-import './ListItem.css';
+import './ListItem.scss';
 
-const ListItem = ({description}) => {
-  const [ descriptionState, setDescriptionState ] = useState(description);
-  const [ checkedState, setCheckedState ] = useState(false);
+const ListItem = (props) => {
+  const [ descriptionState, setDescriptionState ] = useState(props.description);
+  const [ completedState, setCompletedState ] = useState(props.completed);
 
-  const handleCheck = () => {
-    const updatedCheckedState = !checkedState;
-    setCheckedState(updatedCheckedState);
+  const handleCompleted = () => {
+    const updatedCompletedState = !completedState;
+    setCompletedState(updatedCompletedState);
   };
 
-  const handleClick = () => {
+  const handleClicked = () => {
     console.log('clicked');
   };
 
-  const completed = () => !!checkedState;
+  // This don't work!
+  // Use reducers instead: https://reactjs.org/docs/hooks-reference.html#usereducer
+  const completed = () => !!completedState;
 
   return (
-    <div className='list-item' style={{ display: (completed() ? 'none' : 'block')}}>
-      <p className='description' onClick={handleClick()}>
+    <div className={`list-item ${completed() ? 'list-item-completed' : ''}`}>
+      <p className='description' onClick={handleClicked()}>
         <input
           className='checkbox'
           type='checkbox'
-          checked={checkedState}
-          onChange={handleCheck.bind(this)} />
+          checked={completedState}
+          onChange={handleCompleted.bind(this)} />
         {descriptionState}
       </p>
     </div>
   )
 };
 
+ListItem.defaultProps = {
+  completed: false,
+};
+
 ListItem.propTypes = {
   description: PropType.string.isRequired,
+  completed: PropType.bool,
 };
 
 export default ListItem;
