@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropType from 'prop-types';
 import './ListItem.scss';
+import ListItemActions from '../ListItemActions/ListItemActions';
 
 const ListItem = (props) => {
   const [ descriptionState, setDescriptionState ] = useState(props.description);
@@ -29,6 +30,7 @@ const ListItem = (props) => {
           onChange={handleCompleted.bind(this)} />
         {descriptionState}
       </p>
+      <ListItemActions />
     </div>
   )
 };
